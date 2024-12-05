@@ -1,0 +1,19 @@
+{
+    "aihe": "Tiimipalaveri",
+    "osallistujat": [
+      {
+        "nimi": "Matti Meikäläinen"
+      },
+      {
+        "nimi": "Maija Mallikas"
+      },
+      {
+        "nimi": "Ville Virtanen"
+      }
+    ],
+    "osallistujienLukumäärä": 3,
+    "paikka": "Kokoushuone A",
+    "alkaminen": "2024-12-05T10:00:00",
+    "kestoMinuutteina": 60
+  }
+  
