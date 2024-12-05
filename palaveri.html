@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palaveri</title>
+</head>
+<body>
+  <h1>Palaveritiedot</h1>
+  <div id="palaveri"></div>
+
+  <script>
+    
+    const jsonUrl = "https://github.com/juliahenrietta/palaveri.git/palaveri.json";
+
+    
+    fetch(jsonUrl)
+      .then(response => response.json())
+      .then(data => {
+        const palaveriDiv = document.getElementById("palaveri");
+
+        const alkamisaika = new Date(data.alkaminen).toLocaleString("fi-FI", {
+          dateStyle: "short",
+          timeStyle: "short"
+        });
+
+        const osallistujat = data.osallistujat.map(henkilo => henkilo.nimi).join(", ");
+
+        palaveriDiv.innerHTML = `
+          <p><strong>Aihe:</strong> ${data.aihe}</p>
+          <p><strong>Osallistujien lukumäärä:</strong> ${data.osallistujienLukumäärä}</p>
+          <p><strong>Osallistujat:</strong> ${osallistujat}</p>
+          <p><strong>Paikka:</strong> ${data.paikka}</p>
+          <p><strong>Alkaminen:</strong> ${alkamisaika}</p>
+          <p><strong>Kesto:</strong> ${data.kestoMinuutteina} minuuttia</p>
+        `;
+      })
+      .catch(error => {
+        console.error("Virhe haettaessa JSON-dataa:", error);
+        document.getElementById("palaveri").innerText = "Tietojen haku epäonnistui.";
+      });
+  </script>
+</body>
+</html>
